@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="sty.css">
+    <link rel="stylesheet" href="newsty.css">
+    <title> Online Bank</title>
+  </head>
+  <body>
+    <nav>
+        <ul class="topnav" id="dropdownclick">
+          <li><a class="active" href="land.html"> Home</a></li>
+          <li><a href="deposit.html">Deposit</a></li>
+          <li><a href="withdraw.html">Withdraw</a></li>
+          <li><a href="transaction.html">View</a></li>
+          <li><a href="create.html">Add</a></li>
+     
+          <li class="topnav-right"><a href="land.html"> Logout</a></li>
+          <li class="dropdownicon"><a href="javascript:void(0);"
+             onclick="dropdownmenu()">&#9776;</a></li>
+        </ul>
+    </nav>
+    
+   <h3 align=center><u>deposit</u></h3>
+
+<span class="blink">
+<h3 align=center style="color: red"><c:out value="${msg}"/></h3>
+</span>
+
+<br>
+
+
+<form:form action="addacc" method="post" modelAttribute="emp1">
+
+<table align=center>
+
+<tr>
+<td><label>deposit</label></td>
+<td>
+<form:input path="id" required="required"></form:input>
+</td>
+</tr>
+   </table> 
+    
+    </body>
+</html>

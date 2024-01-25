@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<style>
+        @import url('https://fonts.googleapis.com/css?family=Parisienne|Quicksand&display=swap');
+    body {
+          background-image: url('homebg1.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+    
+
+
+
+.header-bar {
+  position: relative;
+  width: 100%;
+  min-width: 300px;
+  height: 50px;
+  border: 10px solid transparent;
+  border-top: 10px solid rgb(12, 12, 12);
+  border-left: 10px solid rgb(0, 0, 0);
+  background-image: linear-gradient(to bottom right, rgb(245, 245, 245), rgb(233, 233, 233), rgb(243, 240, 242), rgb(245, 240, 243), rgb(240, 240, 240))
+}
+.header-bar::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 50%;
+  height: 49px;
+  border: 10px solid transparent;
+  border-bottom: 10px solid rgb(8, 8, 8);
+  border-right: 10px solid rgb(0, 0, 0);
+  transition: 0.3s linear all;
+}
+
+.slider-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+.slider-menu > li {
+  display: inline-flex;
+  padding: 14px;
+  margin-left: 2px;
+  font-family: 'Quicksand', sans-serif;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s linear all;
+  user-select: none;
+}
+
+.aeu-signature {
+  position: fixed;
+  top: 5px;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 15px;
+  line-height: 30px;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 25px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+.Link{
+    color: #000000;
+    font: bold;
+    text-decoration: none;
+}
+.submit {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button1 {border-radius: 24px;}
+    </style>
+</head>
+<body>
+    <div class="Head">
+        <left><header>
+            <div class="header-bar">
+    
+                <ul class="slider-menu">
+                    <li><a href="Home.jsp" class="Link" >HOME</a></li>
+                    <li><a href="Login.jsp" class="Link">LOGIN</a></li>
+                    <li><a href="Register.jsp" class="Link">REGISTER</a></li>
+                    <li><a href="Vote.jsp" class="Link">VOTE</a></li>
+                    <li><a href="Contact.jsp" class="Link">CONTACT</a></li>
+                    <li><a href="About.jsp" class="Link">ABOUT</a></li>
+                </ul>
+            </div>
+        
+            <hr>
+        </header></left>
+    </div>
+    <body>
+        <%
+            try{
+             Class.forName("com.mysql.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/oams","root", "Asadashraf@2001");
+            String username = request.getParameter("username");
+            String email = request.getParameter("email");
+            String pass = request.getParameter("password");
+            String pass1 = request.getParameter("password1");
+            String ph=request.getParameter("phn");
+            
+            String q ="INSERT INTO Login(username,email,password,password1,phn) VALUES('"+username+"','"+email+"','"+pass+"','"+pass1+"','"+ph+"');";
+              
+               PreparedStatement pst = c.prepareStatement(q);
+               pst.executeUpdate();
+              
+                javax.swing.JOptionPane.showMessageDialog(null, "Record Inserted");
+                        response.sendRedirect("login.jsp");
+            
+            }catch(Exception ae){
+                out.println("Successfully Added");
+                response.sendRedirect("login.jsp");
+            }
+
+        %>
+        
+    </body>
+</html>

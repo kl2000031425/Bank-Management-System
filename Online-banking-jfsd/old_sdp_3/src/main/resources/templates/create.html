@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="sty.css">
+    <link rel="stylesheet" href="newsty.css">
+    <link rel="stylesheet" href="form.css">
+   
+    <title> Online Bank</title>
+  </head>
+  <body>
+    <nav>
+        <ul class="topnav" id="dropdownclick">
+          <li><a class="active" href="land"> Home</a></li>
+          <li><a href="deposit">Deposit</a></li>
+          <li><a href="withdraw">Withdraw</a></li>
+          <li><a href="view">View</a></li>
+          <li><a href="create">Add</a></li>
+     
+          <li class="topnav-right"><a href="land.html"> Logout</a></li>
+          <li class="dropdownicon"><a href="javascript:void(0);"
+             onclick="dropdownmenu()">&#9776;</a></li>
+        </ul>
+    </nav>
+    <h3 align=center><u>Add account</u></h3>
+    
+<div class="wrapper">
+    <h3>Account Type</h3>
+    
+    <form th:action="@{/create}" th:object="${user}" method="POST" action="/land">
+    <div class="form-group">
+      <select class="form-select" id="exampleSelect1" name="actype">
+        <option>Savings Account</option>
+        <option>Debit Account</option>
+      </select>
+    </div>
+    <br></br>
+        <div class="input-box">
+        <input type="text" name="acc" placeholder="Enter acc no" required>
+      </div>
+      <fieldset class="form-group">
+      <legend class="mt-4">Select</legend>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Savings Account 
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+        <label class="form-check-label" for="flexCheckChecked">
+          Debit Account
+        </label>
+      </div>
+    </fieldset>
+    <br></br>
+    <button type="submit" class="btn btn-primary">Add Account</button>
+    </form>
+    </div>
+    </body>
+</html>
